@@ -13,6 +13,8 @@
 
 *Enter a customer profile. See which segment they belong to.*
 
+[**Live Demo**](https://customer-segmentation-apeu.onrender.com)
+
 </div>
 
 ---
@@ -147,6 +149,7 @@ Customer Segmentation/
 │   ├── style.css               # Design system, segment colors, responsive layout
 │   └── script.js               # API calls, state management, result rendering
 ├── requirements.txt            # Pinned dependencies
+├── .gitignore                  # Git ignore rules
 └── README.md
 ```
 
@@ -232,6 +235,8 @@ Open `http://127.0.0.1:8000/` - the frontend is served automatically.
 ### 🚀 Deployment
 
 Deployed on **Render** as a single web service. FastAPI serves both the API routes and the static frontend from one process - no separate frontend hosting needed.
+
+**Live**: [customer-segmentation-apeu.onrender.com](https://customer-segmentation-apeu.onrender.com)
 
 | Setting | Value |
 |---|---|
