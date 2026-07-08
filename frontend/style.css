@@ -646,7 +646,7 @@ input[type="number"]:focus {
     }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 801px) {
     .tool-page .ledger-body {
         align-items: stretch;
     }
