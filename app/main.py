@@ -5,6 +5,10 @@ from contextlib import asynccontextmanager
 import os
 import joblib
 import pandas as pd
+import mimetypes
+
+mimetypes.add_type("text/css", ".css")
+mimetypes.add_type("application/javascript", ".js")
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
