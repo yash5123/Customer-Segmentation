@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Segmentation Ledger</title>
-    <meta name="description" content="An archival record ledger mapping customer demographics to K-Means behavioral segments.">
+    <meta name="description"
+        content="An archival record ledger mapping customer demographics to K-Means behavioral segments.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=2">
 </head>
+
 <body class="home-page">
     <div class="ledger-wrapper">
         <nav class="page-switcher">
@@ -20,12 +26,14 @@
         <header class="ledger-header">
             <span class="ledger-meta">Retail Customer Ledger</span>
             <h1>Customer Segmentation Ledger</h1>
-            <p class="header-desc">Classify customer attributes to identify behavioral segments and targeted marketing strategies.</p>
+            <p class="header-desc">Classify customer attributes to identify behavioral segments and targeted marketing
+                strategies.</p>
         </header>
 
         <section class="home-section">
             <div class="home-intro">
-                <p class="home-lead">This tool sorts customers into six behavioral groups discovered in actual shopping data, so a business can understand who its customers are and market to each group differently.</p>
+                <p class="home-lead">This tool sorts customers into six behavioral groups discovered in actual shopping
+                    data, so a business can understand who its customers are and market to each group differently.</p>
             </div>
 
             <div class="process-deck">
@@ -35,28 +43,32 @@
                         <span class="process-num">01</span>
                         <div class="process-content">
                             <h4>Data Collection</h4>
-                            <p>Real shopping data from customers (their age, income, and spending habits) was collected and prepared.</p>
+                            <p>Real shopping data from customers (their age, income, and spending habits) was collected
+                                and prepared.</p>
                         </div>
                     </li>
                     <li class="process-item">
                         <span class="process-num">02</span>
                         <div class="process-content">
                             <h4>Clustering Analysis</h4>
-                            <p>A machine learning method grouped those customers into six segments based on shared patterns, without being told in advance what the groups should be.</p>
+                            <p>A machine learning method grouped those customers into six segments based on shared
+                                patterns, without being told in advance what the groups should be.</p>
                         </div>
                     </li>
                     <li class="process-item">
                         <span class="process-num">03</span>
                         <div class="process-content">
                             <h4>Persona Profiling</h4>
-                            <p>Each segment was studied and given a plain-language description and marketing strategy based on who its customers actually are.</p>
+                            <p>Each segment was studied and given a plain-language description and marketing strategy
+                                based on who its customers actually are.</p>
                         </div>
                     </li>
                     <li class="process-item">
                         <span class="process-num">04</span>
                         <div class="process-content">
                             <h4>Interactive Mapping</h4>
-                            <p>Enter a customer's details below to see which segment they fall into and how they compare to the average.</p>
+                            <p>Enter a customer's details below to see which segment they fall into and how they compare
+                                to the average.</p>
                         </div>
                     </li>
                 </ol>
@@ -99,19 +111,29 @@
             <div class="model-mechanics">
                 <h3>Model Mechanics</h3>
                 <div class="mechanics-content">
-                    <p>The segmentation is driven by a K-Means clustering algorithm, a machine learning model that finds natural groupings in multi-dimensional customer data. The classification process runs as follows:</p>
+                    <p>The segmentation is driven by a K-Means clustering algorithm, a machine learning model that finds
+                        natural groupings in multi-dimensional customer data. The classification process runs as
+                        follows:</p>
                     <ul class="mechanics-list">
                         <li>
-                            <strong>Feature Scaling:</strong> Customer age, annual income, and spending scores are measured on different scales. To prevent larger numbers (like income) from dominating the calculation, all values are normalized to a standard scale.
+                            <strong>Feature Scaling:</strong> Customer age, annual income, and spending scores are
+                            measured on different scales. To prevent larger numbers (like income) from dominating the
+                            calculation, all values are normalized to a standard scale.
                         </li>
                         <li>
-                            <strong>Distance Minimization:</strong> The algorithm establishes six center points (centroids) in this standardized space. It then assigns each customer to the closest center point based on geometric distance.
+                            <strong>Distance Minimization:</strong> The algorithm establishes six center points
+                            (centroids) in this standardized space. It then assigns each customer to the closest center
+                            point based on geometric distance.
                         </li>
                         <li>
-                            <strong>Iterative Refinement:</strong> The center points are adjusted repeatedly until they sit perfectly in the middle of their respective customer clusters, minimizing the total distance from customers to their assigned segment center.
+                            <strong>Iterative Refinement:</strong> The center points are adjusted repeatedly until they
+                            sit perfectly in the middle of their respective customer clusters, minimizing the total
+                            distance from customers to their assigned segment center.
                         </li>
                         <li>
-                            <strong>Real-Time Assignment:</strong> When you submit a new profile, the system scales the input variables using the same criteria and calculates which of the six cluster centers is nearest, instantly classifying the customer.
+                            <strong>Real-Time Assignment:</strong> When you submit a new profile, the system scales the
+                            input variables using the same criteria and calculates which of the six cluster centers is
+                            nearest, instantly classifying the customer.
                         </li>
                     </ul>
                 </div>
@@ -119,4 +141,5 @@
         </section>
     </div>
 </body>
+
 </html>
