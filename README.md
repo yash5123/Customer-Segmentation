@@ -13,7 +13,7 @@
 
 *Enter a customer profile. See which segment they belong to.*
 
-[**Live Demo**](https://customer-segmentation-apeu.onrender.com)
+[![Live Demo](https://img.shields.io/badge/%E2%96%B2_LIVE_DEMO-00C7B7?style=for-the-badge&logoColor=white)](https://customer-segmentation-apeu.onrender.com)
 
 </div>
 
