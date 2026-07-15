@@ -5,140 +5,128 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Segmentation Ledger</title>
-    <meta name="description"
-        content="An archival record ledger mapping customer demographics to K-Means behavioral segments.">
+    <meta name="description" content="An archival record ledger mapping customer demographics to K-Means behavioral segments.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="home-page">
-    <div class="ledger-wrapper">
-        <nav class="page-switcher">
-            <a href="index.html" class="page-tab active">Overview</a>
-            <a href="segment-finder.html" class="page-tab">Segment Finder</a>
+<body>
+    <div class="app-container">
+        <nav class="main-nav" aria-label="Primary Navigation">
+            <a href="index.html" class="nav-brand">Retail Ledger</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active" aria-current="page">Overview</a>
+                <a href="segment-finder.html" class="nav-link">Segment Finder</a>
+            </div>
         </nav>
 
-        <header class="ledger-header">
-            <span class="ledger-meta">Retail Customer Ledger</span>
-            <h1>Customer Segmentation Ledger</h1>
-            <p class="header-desc">Classify customer attributes to identify behavioral segments and targeted marketing
-                strategies.</p>
-        </header>
-
-        <section class="home-section">
-            <div class="home-intro">
-                <p class="home-lead">This tool sorts customers into six behavioral groups discovered in actual shopping
-                    data, so a business can understand who its customers are and market to each group differently.</p>
-            </div>
-
-            <div class="process-deck">
-                <h3>How It Works</h3>
-                <ol class="process-list">
-                    <li class="process-item">
-                        <span class="process-num">01</span>
-                        <div class="process-content">
-                            <h4>Data Collection</h4>
-                            <p>Real shopping data from customers (their age, income, and spending habits) was collected
-                                and prepared.</p>
-                        </div>
-                    </li>
-                    <li class="process-item">
-                        <span class="process-num">02</span>
-                        <div class="process-content">
-                            <h4>Clustering Analysis</h4>
-                            <p>A machine learning method grouped those customers into six segments based on shared
-                                patterns, without being told in advance what the groups should be.</p>
-                        </div>
-                    </li>
-                    <li class="process-item">
-                        <span class="process-num">03</span>
-                        <div class="process-content">
-                            <h4>Persona Profiling</h4>
-                            <p>Each segment was studied and given a plain-language description and marketing strategy
-                                based on who its customers actually are.</p>
-                        </div>
-                    </li>
-                    <li class="process-item">
-                        <span class="process-num">04</span>
-                        <div class="process-content">
-                            <h4>Interactive Mapping</h4>
-                            <p>Enter a customer's details below to see which segment they fall into and how they compare
-                                to the average.</p>
-                        </div>
-                    </li>
-                </ol>
-            </div>
-
-            <div class="previews-deck">
-                <h3>The Six Customer Groups</h3>
-                <div class="previews-grid">
-                    <div class="preview-card" data-preview-id="4">
-                        <span class="preview-tag border-4">Spender Apprentices</span>
-                        <p>Younger shoppers with entry level incomes who spend heavily.</p>
+        <main class="home-layout">
+            <section class="hero-layout" aria-label="Introduction">
+                <div class="hero-content">
+                    <span class="page-meta">K-Means Customer Analysis</span>
+                    <h1>Customer Segmentation <em>Ledger</em></h1>
+                    <p class="hero-lead">This tool sorts customers into six behavioral groups discovered in actual shopping data, so a business can understand who its customers are and market to each group differently.</p>
+                    <div style="margin-top: var(--space-4);">
+                        <a href="segment-finder.html" class="ink-btn" style="width: auto;">Find Your Segment</a>
                     </div>
-                    <div class="preview-card" data-preview-id="1">
-                        <span class="preview-tag border-1">Young Moderates</span>
+                </div>
+                <div class="hero-illustration" aria-hidden="true">
+                    <div class="illustration-center"></div>
+                    <div class="illustration-orbit">
+                        <div class="orbit-node"></div>
+                    </div>
+                    <div class="illustration-orbit">
+                        <div class="orbit-node"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="process-section" aria-labelledby="process-heading">
+                <h2 id="process-heading">How It <em>Works</em></h2>
+                <div class="process-grid">
+                    <div class="process-card">
+                        <span class="process-step">01</span>
+                        <h4>Data Collection</h4>
+                        <p>Real shopping data from customers (their age, income, and spending habits) was collected and prepared.</p>
+                    </div>
+                    <div class="process-card">
+                        <span class="process-step">02</span>
+                        <h4>Clustering Analysis</h4>
+                        <p>A machine learning method grouped those customers into six segments based on shared patterns, without being told in advance what the groups should be.</p>
+                    </div>
+                    <div class="process-card">
+                        <span class="process-step">03</span>
+                        <h4>Persona Profiling</h4>
+                        <p>Each segment was studied and given a plain-language description and marketing strategy based on who its customers actually are.</p>
+                    </div>
+                    <div class="process-card">
+                        <span class="process-step">04</span>
+                        <h4>Interactive Mapping</h4>
+                        <p>Enter a customer's details to see which segment they fall into and how they compare to the average.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="preview-section" aria-labelledby="groups-heading">
+                <h2 id="groups-heading">The Six Customer <em>Groups</em></h2>
+                <div class="previews-grid">
+                    <div class="preview-card">
+                        <span class="preview-tag">Spender Apprentices</span>
+                        <p>Younger shoppers with entry-level incomes who spend heavily.</p>
+                    </div>
+                    <div class="preview-card">
+                        <span class="preview-tag">Young Moderates</span>
                         <p>Younger adults earning average salaries with balanced spending.</p>
                     </div>
-                    <div class="preview-card" data-preview-id="3">
-                        <span class="preview-tag border-3">High-Value Trendsetters</span>
-                        <p>Younger, high earning shoppers who spend heavily.</p>
+                    <div class="preview-card">
+                        <span class="preview-tag">High-Value Trendsetters</span>
+                        <p>Younger, high-earning shoppers who spend heavily.</p>
                     </div>
-                    <div class="preview-card" data-preview-id="2">
-                        <span class="preview-tag border-2">Affluent Conservatives</span>
-                        <p>High earning middle aged adults who spend very conservatively.</p>
+                    <div class="preview-card">
+                        <span class="preview-tag">Affluent Conservatives</span>
+                        <p>High-earning middle-aged adults who spend very conservatively.</p>
                     </div>
-                    <div class="preview-card" data-preview-id="5">
-                        <span class="preview-tag border-5">Budget Conscious</span>
-                        <p>Middle aged shoppers with lower incomes who spend conservatively.</p>
+                    <div class="preview-card">
+                        <span class="preview-tag">Budget Conscious</span>
+                        <p>Middle-aged shoppers with lower incomes who spend conservatively.</p>
                     </div>
-                    <div class="preview-card" data-preview-id="0">
-                        <span class="preview-tag border-0">Traditionalists</span>
+                    <div class="preview-card">
+                        <span class="preview-tag">Traditionalists</span>
                         <p>Older shoppers with moderate incomes who spend moderately.</p>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="home-cta">
-                <a href="segment-finder.html" class="ink-btn cta-btn">Find Your Segment</a>
-            </div>
-
-            <div class="model-mechanics">
-                <h3>Model Mechanics</h3>
-                <div class="mechanics-content">
-                    <p>The segmentation is driven by a K-Means clustering algorithm, a machine learning model that finds
-                        natural groupings in multi-dimensional customer data. The classification process runs as
-                        follows:</p>
-                    <ul class="mechanics-list">
-                        <li>
-                            <strong>Feature Scaling:</strong> Customer age, annual income, and spending scores are
-                            measured on different scales. To prevent larger numbers (like income) from dominating the
-                            calculation, all values are normalized to a standard scale.
-                        </li>
-                        <li>
-                            <strong>Distance Minimization:</strong> The algorithm establishes six center points
-                            (centroids) in this standardized space. It then assigns each customer to the closest center
-                            point based on geometric distance.
-                        </li>
-                        <li>
-                            <strong>Iterative Refinement:</strong> The center points are adjusted repeatedly until they
-                            sit perfectly in the middle of their respective customer clusters, minimizing the total
-                            distance from customers to their assigned segment center.
-                        </li>
-                        <li>
-                            <strong>Real-Time Assignment:</strong> When you submit a new profile, the system scales the
-                            input variables using the same criteria and calculates which of the six cluster centers is
-                            nearest, instantly classifying the customer.
-                        </li>
-                    </ul>
+            <section class="card-panel" aria-labelledby="mechanics-heading">
+                <h2 id="mechanics-heading" class="panel-title">Model <em>Mechanics</em></h2>
+                <p class="panel-desc">The segmentation is driven by a K-Means clustering algorithm, a machine learning model that finds natural groupings in multi-dimensional customer data.</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-6);">
+                    <div class="input-group">
+                        <strong style="display: block; margin-bottom: var(--space-1);">Feature Scaling</strong>
+                        <p style="font-size: 0.85rem;">Customer age, annual income, and spending scores are measured on different scales. To prevent larger numbers (like income) from dominating the calculation, all values are normalized to a standard scale.</p>
+                    </div>
+                    <div class="input-group">
+                        <strong style="display: block; margin-bottom: var(--space-1);">Distance Minimization</strong>
+                        <p style="font-size: 0.85rem;">The algorithm establishes six center points (centroids) in this standardized space. It then assigns each customer to the closest center point based on geometric distance.</p>
+                    </div>
+                    <div class="input-group">
+                        <strong style="display: block; margin-bottom: var(--space-1);">Iterative Refinement</strong>
+                        <p style="font-size: 0.85rem;">The center points are adjusted repeatedly until they sit perfectly in the middle of their respective customer clusters, minimizing the total distance from customers to their assigned segment center.</p>
+                    </div>
+                    <div class="input-group">
+                        <strong style="display: block; margin-bottom: var(--space-1);">Real-Time Assignment</strong>
+                        <p style="font-size: 0.85rem;">When you submit a new profile, the system scales the input variables using the same criteria and calculates which of the six cluster centers is nearest, instantly classifying the customer.</p>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </main>
+
+        <footer class="main-footer">
+            <span class="colophon-meta">Retail Customer Ledger · Version 1.1</span>
+        </footer>
     </div>
 </body>
 

@@ -5,65 +5,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Segment Finder</title>
-    <meta name="description"
-        content="An interactive ledger interface to classify customer attributes and explore behavioral groups.">
+    <meta name="description" content="An interactive ledger interface to classify customer attributes and explore behavioral groups.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="tool-page">
-    <div class="ledger-wrapper">
-        <nav class="page-switcher">
-            <a href="index.html" class="page-tab">Overview</a>
-            <a href="segment-finder.html" class="page-tab active">Segment Finder</a>
+<body>
+    <div class="app-container">
+        <nav class="main-nav" aria-label="Primary Navigation">
+            <a href="index.html" class="nav-brand">Retail Ledger</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Overview</a>
+                <a href="segment-finder.html" class="nav-link active" aria-current="page">Segment Finder</a>
+            </div>
         </nav>
 
-        <header class="ledger-header">
-            <span class="ledger-meta">Retail Customer Ledger</span>
-            <h1>Interactive Segment Finder</h1>
-            <p class="header-desc">Enter attributes to map customers to their corresponding behavioral group.</p>
+        <header class="page-header">
+            <span class="page-meta">Retail Customer Ledger</span>
+            <h1>Interactive Segment <em>Finder</em></h1>
+            <p>Adjust the sliders below to classify customer demographics and see their mapped behavioral group in real-time.</p>
         </header>
 
-        <div class="ledger-body">
-            <section class="entry-panel">
-                <div class="card-header-line">
-                    <h2>Profile Input</h2>
-                </div>
-                <p class="annotation-text section-annotation">Enter a hypothetical customer's details below to see which
-                    group they would belong to.</p>
+        <div class="layout-grid">
+            <section class="card-panel" aria-labelledby="input-heading">
+                <h2 id="input-heading" class="panel-title">Profile <em>Input</em></h2>
+                <p class="panel-desc">Specify customer metrics. The model will instantly assign the customer to the closest segment center.</p>
 
                 <form id="segment-form" novalidate>
-                    <div class="input-field">
-                        <label for="age">Customer Age</label>
-                        <span class="annotation-text input-annotation">How many years old this customer is.</span>
-                        <input type="number" id="age" name="age" min="1" max="120" value="30" required>
-                        <span class="field-hint">Range: 1 - 120 years</span>
+                    <div class="input-group">
+                        <div class="input-label-container">
+                            <label for="age">Customer Age</label>
+                            <span class="input-val-display" id="age-val">30</span>
+                        </div>
+                        <span class="input-annotation">How many years old this customer is.</span>
+                        <div class="slider-container">
+                            <input type="range" id="age" name="age" min="18" max="80" value="30" required aria-describedby="age-hint">
+                        </div>
+                        <span class="field-hint" id="age-hint" style="font-size: 0.75rem; color: var(--color-ink-muted); font-family: var(--font-mono);">Range: 18 - 80 years</span>
                     </div>
 
-                    <div class="input-field">
-                        <label for="annual_income">Annual Income (k$)</label>
-                        <span class="annotation-text input-annotation">How much this customer earns per year, in
-                            thousands of dollars.</span>
-                        <input type="number" id="annual_income" name="annual_income" min="0" max="1000" value="60"
-                            required>
-                        <span class="field-hint">Range: 0 - 1000 k$</span>
+                    <div class="input-group">
+                        <div class="input-label-container">
+                            <label for="annual_income">Annual Income (k$)</label>
+                            <span class="input-val-display" id="annual_income-val">60</span>
+                        </div>
+                        <span class="input-annotation">How much this customer earns per year, in thousands of dollars.</span>
+                        <div class="slider-container">
+                            <input type="range" id="annual_income" name="annual_income" min="5" max="200" value="60" required aria-describedby="income-hint">
+                        </div>
+                        <span class="field-hint" id="income-hint" style="font-size: 0.75rem; color: var(--color-ink-muted); font-family: var(--font-mono);">Range: 5 - 200 k$</span>
                     </div>
 
-                    <div class="input-field">
-                        <label for="spending_score">Spending Score</label>
-                        <span class="annotation-text input-annotation">A score from 1 to 100 showing how much this
-                            customer tends to spend relative to their income.</span>
-                        <input type="number" id="spending_score" name="spending_score" min="1" max="100" value="50"
-                            required>
-                        <span class="field-hint">Range: 1 - 100 score</span>
+                    <div class="input-group">
+                        <div class="input-label-container">
+                            <label for="spending_score">Spending Score</label>
+                            <span class="input-val-display" id="spending_score-val">50</span>
+                        </div>
+                        <span class="input-annotation">A score from 1 to 100 representing their spending frequency and value.</span>
+                        <div class="slider-container">
+                            <input type="range" id="spending_score" name="spending_score" min="1" max="100" value="50" required aria-describedby="spending-hint">
+                        </div>
+                        <span class="field-hint" id="spending-hint" style="font-size: 0.75rem; color: var(--color-ink-muted); font-family: var(--font-mono);">Range: 1 - 100 score</span>
                     </div>
 
-                    <button type="submit" class="ink-btn" id="submit-btn">
+                    <button type="submit" class="ink-btn" id="submit-btn" style="margin-top: var(--space-4);">
                         <span id="btn-text">Submit Entry</span>
                         <span id="btn-loader" class="ink-spinner" aria-hidden="true"></span>
                     </button>
@@ -72,199 +80,275 @@
                 <div id="error-banner" class="error-box" role="alert"></div>
             </section>
 
-            <section class="roster-panel">
-                <div class="card-header-line">
-                    <h2>Segment Roster</h2>
-                </div>
-                <p class="annotation-text section-annotation">These are the six customer groups found in the real
-                    shopping data, each one represents a distinct kind of customer.</p>
-
-                <div class="roster-drawer" id="roster-drawer" tabindex="0" aria-label="Customer Segment Roster">
-                    <div class="roster-row" data-cluster-id="4">
-                        <div class="row-header">
-                            <span class="row-index">Segment 1</span>
-                            <div class="row-title-container">
-                                <h3 class="row-title">Spender Apprentices</h3>
-                                <p class="annotation-text row-plain-desc">Younger shoppers with entry-level incomes who
-                                    spend a large portion of their money. They are attracted to flash sales and low-cost
-                                    trend items.</p>
+            <section class="roster-panel" aria-labelledby="roster-heading">
+                <h2 id="roster-heading" style="display: none;">Segment Roster</h2>
+                <div class="roster-drawer" id="roster-drawer" aria-label="Customer Segment Roster">
+                    <div class="roster-card" data-cluster="4">
+                        <div class="card-header">
+                            <div class="card-title-group">
+                                <span class="card-index">Segment 1</span>
+                                <h3 class="card-title">Spender Apprentices</h3>
                             </div>
-                            <span class="row-summary">Age 25 | Income $25k | Spend 78</span>
+                            <span class="card-meta-summary">Age 25 | Income $25k | Spend 78</span>
                         </div>
-                        <div class="row-content">
-                            <p class="row-desc">Young customers with low incomes but high spending scores.</p>
-                            <div class="row-strategy">
-                                <span class="strategy-label">Recommended Action:</span>
-                                <p class="strategy-text">Promote flash sales, student discounts, and buy-now-pay-later
-                                    options.</p>
+                        <div class="card-body">
+                            <p class="card-description">Younger shoppers with entry-level incomes who spend a large portion of their money. They are attracted to flash sales and low-cost trend items.</p>
+                            <div class="card-strategy">
+                                <span class="strategy-title">Recommended Strategy</span>
+                                <p class="strategy-text">Promote low-cost trend items, flash sales, student discounts, and buy-now-pay-later payment options.</p>
                             </div>
-                            <div class="profile-slot" id="slot-4"></div>
-                            <div class="row-metrics">
-                                <div class="metric"><span class="val">25</span><span class="lbl">Avg Age</span></div>
-                                <div class="metric"><span class="val">$25k</span><span class="lbl">Avg Income</span>
+                            <div class="profile-match-slot" id="match-4">
+                                <div class="match-slot-header">Current Match Profile</div>
+                                <div class="match-slot-metrics">
+                                    <div class="match-slot-metric">Age: <span class="match-age">—</span></div>
+                                    <div class="match-slot-metric">Income: $<span class="match-income">—</span>k</div>
+                                    <div class="match-slot-metric">Spend Score: <span class="match-spend">—</span>/100</div>
                                 </div>
-                                <div class="metric"><span class="val">78/100</span><span class="lbl">Avg Spend</span>
-                                </div>
-                                <div class="metric"><span class="val">23</span><span class="lbl">Size</span></div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="roster-row" data-cluster-id="1">
-                        <div class="row-header">
-                            <span class="row-index">Segment 2</span>
-                            <div class="row-title-container">
-                                <h3 class="row-title">Young Moderates</h3>
-                                <p class="annotation-text row-plain-desc">Younger adults earning average salaries with
-                                    balanced spending habits. They are best reached via subscription offers and social
-                                    media campaigns.</p>
-                            </div>
-                            <span class="row-summary">Age 27 | Income $57k | Spend 48</span>
-                        </div>
-                        <div class="row-content">
-                            <p class="row-desc">Younger customers with moderate incomes and moderate spending habits.
-                            </p>
-                            <div class="row-strategy">
-                                <span class="strategy-label">Recommended Action:</span>
-                                <p class="strategy-text">Engage through social media marketing and subscription-based
-                                    service offers.</p>
-                            </div>
-                            <div class="profile-slot" id="slot-1"></div>
-                            <div class="row-metrics">
-                                <div class="metric"><span class="val">27</span><span class="lbl">Avg Age</span></div>
-                                <div class="metric"><span class="val">$57k</span><span class="lbl">Avg Income</span>
+                            <div class="card-metrics">
+                                <div class="metric-box">
+                                    <span class="metric-val">25.0</span>
+                                    <span class="metric-lbl">Avg Age</span>
                                 </div>
-                                <div class="metric"><span class="val">48/100</span><span class="lbl">Avg Spend</span>
+                                <div class="metric-box">
+                                    <span class="metric-val">$25.3k</span>
+                                    <span class="metric-lbl">Avg Income</span>
                                 </div>
-                                <div class="metric"><span class="val">39</span><span class="lbl">Size</span></div>
+                                <div class="metric-box">
+                                    <span class="metric-val">77.6</span>
+                                    <span class="metric-lbl">Avg Spend</span>
+                                </div>
+                                <div class="metric-box">
+                                    <span class="metric-val">23</span>
+                                    <span class="metric-lbl">Size</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="roster-row" data-cluster-id="3">
-                        <div class="row-header">
-                            <span class="row-index">Segment 3</span>
-                            <div class="row-title-container">
-                                <h3 class="row-title">High-Value Trendsetters</h3>
-                                <p class="annotation-text row-plain-desc">Younger and middle-aged adults with high
-                                    incomes who spend heavily. They respond best to premium luxury products and personal
-                                    buyer options.</p>
+                    <div class="roster-card" data-cluster="1">
+                        <div class="card-header">
+                            <div class="card-title-group">
+                                <span class="card-index">Segment 2</span>
+                                <h3 class="card-title">Young Moderates</h3>
                             </div>
-                            <span class="row-summary">Age 33 | Income $87k | Spend 82</span>
+                            <span class="card-meta-summary">Age 27 | Income $57k | Spend 48</span>
                         </div>
-                        <div class="row-content">
-                            <p class="row-desc">Young-to-middle-aged customers with high incomes and high spending
-                                scores.</p>
-                            <div class="row-strategy">
-                                <span class="strategy-label">Recommended Action:</span>
-                                <p class="strategy-text">Target with luxury items, new arrivals, and personal shopper
-                                    services.</p>
+                        <div class="card-body">
+                            <p class="card-description">Younger adults earning average salaries with balanced spending habits. They are best reached via subscription offers and social media campaigns.</p>
+                            <div class="card-strategy">
+                                <span class="strategy-title">Recommended Strategy</span>
+                                <p class="strategy-text">Engage through social media marketing, mobile-first promotions, and subscription-based service offers.</p>
                             </div>
-                            <div class="profile-slot" id="slot-3"></div>
-                            <div class="row-metrics">
-                                <div class="metric"><span class="val">33</span><span class="lbl">Avg Age</span></div>
-                                <div class="metric"><span class="val">$87k</span><span class="lbl">Avg Income</span>
+                            <div class="profile-match-slot" id="match-1">
+                                <div class="match-slot-header">Current Match Profile</div>
+                                <div class="match-slot-metrics">
+                                    <div class="match-slot-metric">Age: <span class="match-age">—</span></div>
+                                    <div class="match-slot-metric">Income: $<span class="match-income">—</span>k</div>
+                                    <div class="match-slot-metric">Spend Score: <span class="match-spend">—</span>/100</div>
                                 </div>
-                                <div class="metric"><span class="val">82/100</span><span class="lbl">Avg Spend</span>
-                                </div>
-                                <div class="metric"><span class="val">39</span><span class="lbl">Size</span></div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="roster-row" data-cluster-id="2">
-                        <div class="row-header">
-                            <span class="row-index">Segment 4</span>
-                            <div class="row-title-container">
-                                <h3 class="row-title">Affluent Conservatives</h3>
-                                <p class="annotation-text row-plain-desc">Established middle-aged high earners who spend
-                                    very conservatively. They focus on purchasing premium quality items rather than
-                                    following trends.</p>
-                            </div>
-                            <span class="row-summary">Age 42 | Income $89k | Spend 17</span>
-                        </div>
-                        <div class="row-content">
-                            <p class="row-desc">Middle-aged customers with high incomes but low spending scores.</p>
-                            <div class="row-strategy">
-                                <span class="strategy-label">Recommended Action:</span>
-                                <p class="strategy-text">Target with high-end premium goods and exclusive VIP
-                                    invitations.</p>
-                            </div>
-                            <div class="profile-slot" id="slot-2"></div>
-                            <div class="row-metrics">
-                                <div class="metric"><span class="val">42</span><span class="lbl">Avg Age</span></div>
-                                <div class="metric"><span class="val">$89k</span><span class="lbl">Avg Income</span>
+                            <div class="card-metrics">
+                                <div class="metric-box">
+                                    <span class="metric-val">26.8</span>
+                                    <span class="metric-lbl">Avg Age</span>
                                 </div>
-                                <div class="metric"><span class="val">17/100</span><span class="lbl">Avg Spend</span>
+                                <div class="metric-box">
+                                    <span class="metric-val">$57.1k</span>
+                                    <span class="metric-lbl">Avg Income</span>
                                 </div>
-                                <div class="metric"><span class="val">33</span><span class="lbl">Size</span></div>
+                                <div class="metric-box">
+                                    <span class="metric-val">48.1</span>
+                                    <span class="metric-lbl">Avg Spend</span>
+                                </div>
+                                <div class="metric-box">
+                                    <span class="metric-val">39</span>
+                                    <span class="metric-lbl">Size</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="roster-row" data-cluster-id="5">
-                        <div class="row-header">
-                            <span class="row-index">Segment 5</span>
-                            <div class="row-title-container">
-                                <h3 class="row-title">Budget Conscious</h3>
-                                <p class="annotation-text row-plain-desc">Middle-aged shoppers with lower incomes who
-                                    spend very conservatively. They are highly price-sensitive and look for clearance
-                                    sales and discounts.</p>
+                    <div class="roster-card" data-cluster="3">
+                        <div class="card-header">
+                            <div class="card-title-group">
+                                <span class="card-index">Segment 3</span>
+                                <h3 class="card-title">High-Value Trendsetters</h3>
                             </div>
-                            <span class="row-summary">Age 46 | Income $26k | Spend 19</span>
+                            <span class="card-meta-summary">Age 33 | Income $87k | Spend 82</span>
                         </div>
-                        <div class="row-content">
-                            <p class="row-desc">Middle-aged to older customers with low incomes and low spending scores.
-                            </p>
-                            <div class="row-strategy">
-                                <span class="strategy-label">Recommended Action:</span>
-                                <p class="strategy-text">Focus on budget friendly products and clearance sales.</p>
+                        <div class="card-body">
+                            <p class="card-description">Younger and middle-aged adults with high incomes who spend heavily. They respond best to premium luxury products and personal buyer options.</p>
+                            <div class="card-strategy">
+                                <span class="strategy-title">Recommended Strategy</span>
+                                <p class="strategy-text">Target with luxury items, new arrivals, high-prestige product launches, and personal shopper services.</p>
                             </div>
-                            <div class="profile-slot" id="slot-5"></div>
-                            <div class="row-metrics">
-                                <div class="metric"><span class="val">46</span><span class="lbl">Avg Age</span></div>
-                                <div class="metric"><span class="val">$26k</span><span class="lbl">Avg Income</span>
+                            <div class="profile-match-slot" id="match-3">
+                                <div class="match-slot-header">Current Match Profile</div>
+                                <div class="match-slot-metrics">
+                                    <div class="match-slot-metric">Age: <span class="match-age">—</span></div>
+                                    <div class="match-slot-metric">Income: $<span class="match-income">—</span>k</div>
+                                    <div class="match-slot-metric">Spend Score: <span class="match-spend">—</span>/100</div>
                                 </div>
-                                <div class="metric"><span class="val">19/100</span><span class="lbl">Avg Spend</span>
+                            </div>
+                            <div class="card-metrics">
+                                <div class="metric-box">
+                                    <span class="metric-val">32.7</span>
+                                    <span class="metric-lbl">Avg Age</span>
                                 </div>
-                                <div class="metric"><span class="val">21</span><span class="lbl">Size</span></div>
+                                <div class="metric-box">
+                                    <span class="metric-val">$86.5k</span>
+                                    <span class="metric-lbl">Avg Income</span>
+                                </div>
+                                <div class="metric-box">
+                                    <span class="metric-val">82.1</span>
+                                    <span class="metric-lbl">Avg Spend</span>
+                                </div>
+                                <div class="metric-box">
+                                    <span class="metric-val">39</span>
+                                    <span class="metric-lbl">Size</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="roster-row" data-cluster-id="0">
-                        <div class="row-header">
-                            <span class="row-index">Segment 6</span>
-                            <div class="row-title-container">
-                                <h3 class="row-title">Traditionalists</h3>
-                                <p class="annotation-text row-plain-desc">Older shoppers with moderate incomes and
-                                    balanced spending habits. They prefer practical, reliable products and value-based
-                                    loyalty programs.</p>
+                    <div class="roster-card" data-cluster="2">
+                        <div class="card-header">
+                            <div class="card-title-group">
+                                <span class="card-index">Segment 4</span>
+                                <h3 class="card-title">Affluent Conservatives</h3>
                             </div>
-                            <span class="row-summary">Age 56 | Income $54k | Spend 49</span>
+                            <span class="card-meta-summary">Age 42 | Income $89k | Spend 17</span>
                         </div>
-                        <div class="row-content">
-                            <p class="row-desc">Older customers with moderate incomes and moderate spending habits.</p>
-                            <div class="row-strategy">
-                                <span class="strategy-label">Recommended Action:</span>
-                                <p class="strategy-text">Target with practical, reliable products and loyalty program
-                                    incentives.</p>
+                        <div class="card-body">
+                            <p class="card-description">Established middle-aged high earners who spend very conservatively. They focus on purchasing premium quality items rather than following trends.</p>
+                            <div class="card-strategy">
+                                <span class="strategy-title">Recommended Strategy</span>
+                                <p class="strategy-text">Target with high-end premium goods, exclusive VIP invitations, and personalized loyalty benefits emphasizing long-term value.</p>
                             </div>
-                            <div class="profile-slot" id="slot-0"></div>
-                            <div class="row-metrics">
-                                <div class="metric"><span class="val">56</span><span class="lbl">Avg Age</span></div>
-                                <div class="metric"><span class="val">$54k</span><span class="lbl">Avg Income</span>
+                            <div class="profile-match-slot" id="match-2">
+                                <div class="match-slot-header">Current Match Profile</div>
+                                <div class="match-slot-metrics">
+                                    <div class="match-slot-metric">Age: <span class="match-age">—</span></div>
+                                    <div class="match-slot-metric">Income: $<span class="match-income">—</span>k</div>
+                                    <div class="match-slot-metric">Spend Score: <span class="match-spend">—</span>/100</div>
                                 </div>
-                                <div class="metric"><span class="val">49/100</span><span class="lbl">Avg Spend</span>
+                            </div>
+                            <div class="card-metrics">
+                                <div class="metric-box">
+                                    <span class="metric-val">41.9</span>
+                                    <span class="metric-lbl">Avg Age</span>
                                 </div>
-                                <div class="metric"><span class="val">45</span><span class="lbl">Size</span></div>
+                                <div class="metric-box">
+                                    <span class="metric-val">$88.9k</span>
+                                    <span class="metric-lbl">Avg Income</span>
+                                </div>
+                                <div class="metric-box">
+                                    <span class="metric-val">17.0</span>
+                                    <span class="metric-lbl">Avg Spend</span>
+                                </div>
+                                <div class="metric-box">
+                                    <span class="metric-val">33</span>
+                                    <span class="metric-lbl">Size</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="roster-card" data-cluster="5">
+                        <div class="card-header">
+                            <div class="card-title-group">
+                                <span class="card-index">Segment 5</span>
+                                <h3 class="card-title">Budget Conscious</h3>
+                            </div>
+                            <span class="card-meta-summary">Age 46 | Income $26k | Spend 19</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">Middle-aged shoppers with lower incomes who spend very conservatively. They are highly price-sensitive and look for clearance sales and discounts.</p>
+                            <div class="card-strategy">
+                                <span class="strategy-title">Recommended Strategy</span>
+                                <p class="strategy-text">Focus on budget friendly products, clearance sales, and basic utility offerings.</p>
+                            </div>
+                            <div class="profile-match-slot" id="match-5">
+                                <div class="match-slot-header">Current Match Profile</div>
+                                <div class="match-slot-metrics">
+                                    <div class="match-slot-metric">Age: <span class="match-age">—</span></div>
+                                    <div class="match-slot-metric">Income: $<span class="match-income">—</span>k</div>
+                                    <div class="match-slot-metric">Spend Score: <span class="match-spend">—</span>/100</div>
+                                </div>
+                            </div>
+                            <div class="card-metrics">
+                                <div class="metric-box">
+                                    <span class="metric-val">45.5</span>
+                                    <span class="metric-lbl">Avg Age</span>
+                                </div>
+                                <div class="metric-box">
+                                    <span class="metric-val">$26.3k</span>
+                                    <span class="metric-lbl">Avg Income</span>
+                                </div>
+                                <div class="metric-box">
+                                    <span class="metric-val">19.4</span>
+                                    <span class="metric-lbl">Avg Spend</span>
+                                </div>
+                                <div class="metric-box">
+                                    <span class="metric-val">21</span>
+                                    <span class="metric-lbl">Size</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="roster-card" data-cluster="0">
+                        <div class="card-header">
+                            <div class="card-title-group">
+                                <span class="card-index">Segment 6</span>
+                                <h3 class="card-title">Traditionalists</h3>
+                            </div>
+                            <span class="card-meta-summary">Age 56 | Income $54k | Spend 49</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-description">Older shoppers with moderate incomes and balanced spending habits. They prefer practical, reliable products and value-based loyalty programs.</p>
+                            <div class="card-strategy">
+                                <span class="strategy-title">Recommended Strategy</span>
+                                <p class="strategy-text">Target with practical, reliable products, loyalty program incentives, and value-based promotions.</p>
+                            </div>
+                            <div class="profile-match-slot" id="match-0">
+                                <div class="match-slot-header">Current Match Profile</div>
+                                <div class="match-slot-metrics">
+                                    <div class="match-slot-metric">Age: <span class="match-age">—</span></div>
+                                    <div class="match-slot-metric">Income: $<span class="match-income">—</span>k</div>
+                                    <div class="match-slot-metric">Spend Score: <span class="match-spend">—</span>/100</div>
+                                </div>
+                            </div>
+                            <div class="card-metrics">
+                                <div class="metric-box">
+                                    <span class="metric-val">56.3</span>
+                                    <span class="metric-lbl">Avg Age</span>
+                                </div>
+                                <div class="metric-box">
+                                    <span class="metric-val">$54.3k</span>
+                                    <span class="metric-lbl">Avg Income</span>
+                                </div>
+                                <div class="metric-box">
+                                    <span class="metric-val">49.1</span>
+                                    <span class="metric-lbl">Avg Spend</span>
+                                </div>
+                                <div class="metric-box">
+                                    <span class="metric-val">45</span>
+                                    <span class="metric-lbl">Size</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
         </div>
+
+        <footer class="main-footer">
+            <span class="colophon-meta">Retail Customer Ledger · Version 1.1</span>
+        </footer>
     </div>
+
     <script src="script.js"></script>
 </body>
 
